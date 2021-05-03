@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"net/http"
 )
 
+func helloWorld(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintf(w, "Hello from the other side!")
+}
+
 func main() {
-	for {
-		fmt.Println("Bazel & Skaffold O_O")
-		time.Sleep(time.Second * 1)
-	}
+	http.HandleFunc("/", helloWorld)
+	http.ListenAndServe(":8080", nil)
 }
