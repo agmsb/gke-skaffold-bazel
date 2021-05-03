@@ -5,8 +5,7 @@ build:
   - image: gcr.io/agmsb-k8s/skaffold-bazel
     bazel:
       target: //:skaffold_example.tar
-profiles:
-- name: remote
-  build:
-    googleCloudBuild:
-      projectId: agmsb-k8s
+deploy:
+  kustomize:
+    paths:
+    - https://github.com/agmsb/k8s-golden-manifests/gke-skaffold-bazel/resources
