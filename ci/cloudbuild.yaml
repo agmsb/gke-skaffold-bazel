@@ -1,0 +1,10 @@
+steps:
+- id: skaffold
+  name: "gcr.io/k8s-skaffold/skaffold:v1.23.0"
+  entrypoint: '/bin/bash'
+  args:
+    - '-c'
+    - |
+      export SKAFFOLD_TAG=${SHORT_SHA}
+      cd app
+      skaffold build
